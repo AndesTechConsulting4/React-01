@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+
+<script type="text/javascript">
+'use strict'
+
+var name="Basil", sname="Wolf";
+
+var reportString = `Hi, ${name}, ${sname} ${1+4}`;
+
+console.log(reportString);
+
+//------------------------------------------
+
+var arr1 = [1,2,3,4,5,6,7,8]
+var arr2 =[-1,0,...arr1,9,10];
+
+console.log(arr2);
+
+var o1 = {name: "and", sname: 'Repl'};
+var o2 = {...o1, name:'sand'};
+
+console.log(o2);
+
+function arrTest(...args)
+{
+  console.log(args);
+}
+
+arrTest(1,2,3,4,5);
+
+function paramsTest(o={data:"123"})
+{
+  console.log(o);
+
+}
+paramsTest({ss: "hi!"});
+
+function paramsTest2({x=22}={})
+{
+ console.log(x);
+
+}
+//paramsTest({ss: "hi!"});
+paramsTest2({x:77});
+
+//---------------------
+
+var o2 = {name,sname};
+console.log(o2);
+
+var [a1,a2,a3] = [1,2,3];
+console.log(a1,a2,a3);
+
+var {name} = o2;
+console.log(name);
+
+var o3 = {id:"qwe_qwe_213", name: "Element1", style:"color: red;"};
+
+
+const a = function(o)
+{
+  console.log(o);
+}
+
+
+var id = "_new_id_213213";
+a(o3);
+a({id,name});
+
+
+
+</script>
+
+
+</body>
+
+</html>

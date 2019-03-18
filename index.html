@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+
+<script type="text/javascript">
+'use strict'
+
+
+{
+ let blockVar = 'Block Var';
+
+
+ console.log("blockVar: ", blockVar);
+}
+
+
+const o = {greets1: 'Hi!', greets2: "Привет!!"};
+
+// console.log("blockVar: ", blockVar);
+
+var f1 = function(){
+//...
+//...
+var o = {greets3: "Hello!!"};
+
+console.log('Test1: ' + new Date().toTimeString());
+console.log("Inner: ", o);
+
+
+
+};
+
+
+
+
+f1();
+console.log("Outer: ", o);
+o.greets1 = "Salute!!";
+console.log("Outer: ", o);
+
+
+(function(){
+//...
+//...
+console.log('Test2: ' + new Date().toTimeString())
+}());
+
+//-----------------------
+
+</script>
+
+<hr/>
+
+<script>
+
+console.log('-----------------------');    
+
+var data = 'myData';
+var o1 = {[data]:"test11"};
+//var [data] = 111;
+console.log(o1.myData);
+
+console.log('---------  2  --------------');
+
+var test = 'Global Test';
+
+var o2 = {
+
+     test : "test",   
+
+     f1 : function(a){
+         console.log(this, this.test);
+     },
+
+     f2 : (a) => {
+         var test = "Lambda test";
+         console.log(this, test);
+     }
+
+}
+
+o2.f1();
+o2.f2();
+
+console.log('---------  3  --------------');
+
+testLambdas = function(){
+
+var o2 = {
+
+     test : "test",   
+
+     f1 : function(a){
+         console.log(this, this.test);
+     },
+
+     f2 : (a) => {
+         //var test = "Lambda test";
+         console.log(this, this.test);
+     }
+
+}
+
+o2.f1();
+o2.f2();
+}
+
+testLambdas();
+
+console.log('---------  4  --------------');
+
+testLambdas = function(){
+
+console.log(this, 'inside function');
+
+var o2 = {
+
+     test : "test",   
+
+     f1 : function(a){
+         console.log(this, this.test);
+     },
+
+     f2 : (a) => {
+         //var test = "Lambda test";
+         console.log(this, this.test);
+     }
+
+}
+
+return o2;
+
+}
+
+testLambdas().f1();
+
+console.log('---------  5  --------------');
+
+
+var ob5 = {
+test5 : function(){
+
+    console.log(this);
+
+    var _this = this; 
+  
+
+    inner1 = function(){
+        console.log(_this);
+    }
+
+   inner2 = () => {console.log(this);} 
+
+    return inner1;
+}
+}
+
+ob5.test5()();
+
+
+</script>
+
+
+</body>
+
+
+
+
+
+
+
+</html>

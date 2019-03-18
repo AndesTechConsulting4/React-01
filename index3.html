@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+
+<script type="text/javascript">
+'use strict'
+
+var name="Basil", sname="Wolf";
+
+var ob2 = {};
+
+Object.defineProperty(ob2, "test4", {value: 123, writable: false, enumerable: false, configurable: true});
+
+
+// Object.defineProperty(ob2, {
+//   name: "test"
+//  } );
+
+console.log(ob2);
+
+class A{
+
+constructor(a,b){
+
+  this.a = a;
+  this.b = b;
+  console.log("+++ctor A: ", this);
+}
+
+getDataString(){
+  return `a=${this.a}, b=${this.b}`;
+}
+
+getData(){
+  console.log(this.getDataString()+".");
+
+}
+
+}
+
+var refA1 = new A("++a", "++b");
+
+//---------------- ES 6 ------------------
+const B = class{
+
+constructor(a,b){
+
+  this._a = a;
+  this._b = b;
+  console.log("+++ctor: ", this);
+}
+
+get a(){
+  console.log("get a: ", this._a);
+  return this._a;
+
+}
+
+set a(a){
+  if( typeof(a)!=='number' || a>100) {throw new Error('Wrong data!!!');}
+  console.log("set a: ", this._a);
+  this._a = a;
+}
+
+getData(){
+  console.log(`a=${this._a}, b=${this._b}.`);
+
+}
+
+static allData2(){
+  console.log("All data 2");
+}
+
+}
+
+B.allData1 = function(){
+  console.log("All data 1");
+}
+
+var refB1 = new B("--a", "--b");
+
+//---------------- ES 5 ----------------
+
+function C(a,b){
+
+  this.a = a;
+  this.b = b;
+  console.log("+++ctor: ", this);
+}
+
+C.prototype.getData = function(){
+  console.log(`a=${this.a}, b=${this.b}.`);
+}
+
+var refC1 = new C("###a", "###b");
+
+
+//-------------- Inner Class ---------
+
+class D{
+
+constructor(a,b){
+
+  this.a = a;
+  this.b = b;
+  console.log("+++ctor D: ", this);
+}
+
+getData(){
+  console.log(`a=${this.a}, b=${this.b}.`);
+
+}
+
+static E = class{
+
+ 
+  constructor(a,b){
+  this.a = a;
+  this.b = b;
+  console.log("+++ctor E: ", this);
+}
+
+getData(){
+  console.log(`a=${this.a}, b=${this.b}.`);
+
+};
+
+
+}
+
+}
+
+
+//-------------- Inheritance ----------------
+
+
+class AA extends A{
+constructor(a,b,c){
+super(a,b);
+this.c = c;
+console.log("+++ctor AA: ", this);
+
+}
+
+getDataString(){
+  return super.getDataString()+ `, c=${this.c}.`;
+}
+
+getData(){
+//super.getData();
+console.log(this.getDataString());
+
+}
+
+}
+
+</script>
+
+
+</body>
+
+</html>
